@@ -1,0 +1,55 @@
+/*
+35. Faça um programa que some os números ímpares contidos em um intervalo definido pelo usuário.
+O usuário define o valor inicial do intervalo e o valor final deste intervalo e o programa deve somar
+todos os números ímpares contidos neste intervalo. Caso o usuário digite um intervalo inválido
+(começando por um valor maior que o valor final), deve ser escrita uma mensagem de erro na tela:
+"Intervalo de valores inválido" e o programa termina.
+
+Exemplo de tela de saída:
+Digite o valor inicial e valor final: 5 10
+Soma dos ímpares neste intervalo: 21
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão para funções como system("pause")
+
+int main()
+{
+
+    int inicio, fim;     // Variáveis que armazenarão o valor inicial e o final do intervalo
+    int soma = 0;        // Variável acumuladora para somar os números ímpares
+
+    // Mensagem inicial ao usuário
+    printf("=============================================\n");
+    printf("   SOMA DOS NUMEROS IMPARES EM UM INTERVALO\n");
+    printf("=============================================\n\n");
+
+    // Solicita ao usuário os valores do intervalo
+    printf("Digite o valor inicial e valor final: ");
+    scanf("%d %d", &inicio, &fim);  // Lê dois inteiros digitados na mesma linha
+
+    // Verifica se o intervalo é válido
+    if (inicio > fim)
+    {
+        printf("\nIntervalo de valores invalido!\n");
+    }
+    else
+    {
+        // Percorre todos os números dentro do intervalo
+        for (int i = inicio; i <= fim; i++)
+        {
+            // Verifica se o número é ímpar (resto da divisão por 2 diferente de 0)
+            if (i % 2 != 0)
+            {
+                soma += i;  // Soma o número ímpar ao acumulador
+            }
+        }
+
+        // Exibe o resultado final
+        printf("\nSoma dos impares neste intervalo: %d\n", soma);
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
