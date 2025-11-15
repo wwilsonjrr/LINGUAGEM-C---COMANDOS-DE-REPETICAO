@@ -1,0 +1,48 @@
+/* 20. Ler uma sequência de números inteiros e determinar se eles são pares ou não.
+   Deve ser informado:
+   - Quantos números foram lidos;
+   - Quantos valores pares foram digitados.
+   O processo termina quando for digitado o número 1000. */
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída
+#include <stdlib.h>  // Biblioteca para usar funções como system("pause")
+
+int main()
+{
+    int numero;          // Variável para armazenar o número digitado
+    int total_lidos = 0; // Contador para a quantidade de números lidos
+    int pares = 0;       // Contador para a quantidade de números pares
+
+    // Primeira leitura do número
+    printf("Digite um numero inteiro (1000 para encerrar): ");
+    scanf("%d", &numero);
+
+    // Enquanto o número digitado for diferente de 1000, o laço continua
+    while (numero != 1000)
+    {
+        total_lidos++; // Incrementa a quantidade de números lidos
+
+        // Verifica se o número é par
+        if (numero % 2 == 0)
+        {
+            pares++; // Se for par, incrementa o contador de pares
+            printf("%d eh par.\n", numero);
+        }
+        else
+        {
+            printf("%d nao eh par.\n", numero);
+        }
+
+        // Solicita o próximo número
+        printf("Digite outro numero inteiro (1000 para encerrar): ");
+        scanf("%d", &numero);
+    }
+
+    // Após sair do laço (quando for digitado 1000), mostra os resultados
+    printf("\nQuantidade de numeros lidos: %d\n", total_lidos);
+    printf("Quantidade de numeros pares: %d\n", pares);
+
+    system("pause"); // Pausa a execução (funciona no Windows)
+    return 0;        // Indica que o programa terminou corretamente
+}
+
