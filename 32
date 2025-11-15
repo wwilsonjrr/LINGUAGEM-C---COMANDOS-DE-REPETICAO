@@ -1,0 +1,62 @@
+/*
+32. Faça um programa que simula o lançamento de dois dados, d1 e d2, n vezes,
+e tem como saída o número de cada dado e a relação entre eles (> , < , =)
+de cada lançamento.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int n; // armazena número de lançamentos
+
+    int d1, d2; // representa dois dados lançados
+
+    printf("=======================================\n");
+    printf("=SIMULADOR DE LANCAMENTO DE DOIS DADOS=\n");
+    printf("=======================================\n");
+
+
+    printf("Digite o numero de lancamentos:  ");
+    scanf("%d", &n);
+
+
+    // inicializa o gerador de números aleatórios com base no tempo atual
+    srand(time(NULL));
+
+
+    printf("\n---RESULTADOS DOS LANCAMENTOS---\n");
+
+
+    // laço que executa os lançamentos n vezes
+    for(int i = 1; i <= n; i++)
+    {
+        //gera valores aleatórios entre 1 e 6 para simular os dados
+        d1 = (rand() % 6) + 1; // rand() % 6 gera números de 0 a 5; soma + 1 para fincar entre 1 e 6
+        d2 = (rand() % 6) + 1;
+
+        //Exibe o número de cada dado
+        printf("Lancamento %d: Dado 1 = %d, Dado 2 = %d --->", i, d1, d2);
+
+        //Comparados dois dados e mostra a relação
+        if(d1 > d2)
+        {
+            printf("D1 > D2\n");
+        }
+        else if(d1 < d2)
+        {
+            printf("D1 < D2\n");
+        }
+        else
+        {
+            printf("D1 = D2\n");
+        }
+    }
+
+    printf("\n---FIM DA SIMULACAO---\n\n");
+
+    system("pause");
+    return 0;
+}
