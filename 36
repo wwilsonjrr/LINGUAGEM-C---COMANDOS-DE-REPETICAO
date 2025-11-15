@@ -1,0 +1,52 @@
+/*
+36. Faça um programa que calcule a diferença entre a soma dos quadrados dos primeiros
+100 números naturais e o quadrado da soma.
+
+Exemplo:
+A soma dos quadrados dos dez primeiros números naturais é:
+1² + 2² + ... + 10² = 385
+
+E o quadrado da soma é:
+(1 + 2 + ... + 10)² = 3025
+
+A diferença entre eles é: 3025 - 385 = 2640
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf)
+#include <stdlib.h>  // Biblioteca padrão para funções como system("pause"))
+
+int main()
+{
+
+    int soma = 0;             // Armazena a soma simples dos números (1 + 2 + 3 + ... + 100)
+    int somaDosQuadrados = 0; // Armazena a soma dos quadrados (1² + 2² + ... + 100²)
+    int quadradoDaSoma;       // Armazena o quadrado da soma ( (1 + 2 + ... + 100)² )
+    int diferenca;            // Armazena a diferença final
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf(" DIFERENCA ENTRE A SOMA DOS QUADRADOS E O QUADRADO DA SOMA\n");
+    printf("=============================================\n\n");
+
+    // Laço para calcular as somas
+    for (int i = 1; i <= 100; i++)
+    {
+        soma += i;                  // Soma simples dos números
+        somaDosQuadrados += i * i;  // Soma dos quadrados dos números
+    }
+
+    // Calcula o quadrado da soma
+    quadradoDaSoma = soma * soma;
+
+    // Calcula a diferença entre o quadrado da soma e a soma dos quadrados
+    diferenca = quadradoDaSoma - somaDosQuadrados;
+
+    // Exibe os resultados
+    printf("Soma dos quadrados: %d\n", somaDosQuadrados);
+    printf("Quadrado da soma: %d\n", quadradoDaSoma);
+    printf("Diferenca: %d\n", diferenca);
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
