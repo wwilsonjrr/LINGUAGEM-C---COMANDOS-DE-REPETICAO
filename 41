@@ -1,0 +1,58 @@
+/*
+41. Faça um programa que calcula a associação em paralelo de dois resistores R1 e R2
+fornecidos pelo usuário via teclado. O programa fica pedindo estes valores e calculando
+até que o usuário entre com um valor para resistência igual a zero.
+
+A fórmula da resistência equivalente é:
+        R = (R1 * R2) / (R1 + R2)
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    float R1, R2, Req;  // Declaração das variáveis (tipo float para permitir decimais)
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   CALCULO DE RESISTENCIA EQUIVALENTE EM PARALELO\n");
+    printf("=============================================\n\n");
+
+    // Laço de repetição que continuará até o usuário digitar 0 em R1 ou R2
+    while (1)
+    {
+        // Solicita ao usuário os valores dos resistores
+        printf("Digite o valor de R1 (0 para encerrar): ");
+        scanf("%f", &R1);
+
+        // Condição de parada
+        if (R1 == 0)
+        {
+            break;  // Sai do laço se R1 for igual a zero
+        }
+
+        printf("Digite o valor de R2 (0 para encerrar): ");
+        scanf("%f", &R2);
+
+        // Condição de parada
+        if (R2 == 0)
+        {
+            break;  // Sai do laço se R2 for igual a zero
+        }
+
+        // Calcula a resistência equivalente em paralelo
+        Req = (R1 * R2) / (R1 + R2);
+
+        // Exibe o resultado
+        printf("Resistencia equivalente (em paralelo): %.2f ohms\n\n", Req);
+    }
+
+    // Mensagem de finalização
+    printf("\nPrograma encerrado. Algum valor de resistencia foi igual a zero.\n");
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
