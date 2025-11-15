@@ -1,0 +1,40 @@
+/*
+29. Escreva um programa para calcular o valor da série, para 5 termos.
+
+        S = 0 + 1/2! + 2/4! + 3/6! + ...
+
+Ou seja, cada termo é formado por: numerador = i, denominador = (2 * i)!
+*/
+
+#include <stdio.h>   // biblioteca padrão de entrada e saída
+#include <stdlib.h>  // usada para system("pause")
+
+int main()
+{
+    int i;                // variável de controle do laço
+    float S = 0;          // Acumuladora. Variável acumula a soma S
+    float fatorial = 1;   // Acumuladora. Acumula o resultado do produto usado para calcular o fatorial.
+
+    // loop para os 5 primeiros termos da série
+    for(i = 0; i < 5; i++)
+    {
+        // calcula o fatorial de (2 * i)
+        for(int j = 1; j <= 2 * i; j++)
+        {
+            fatorial = fatorial * j;  // multiplica até 2*i (ex: 2!, 4!, 6!, ...)
+        }
+
+        // evita divisão por zero no primeiro termo (0/0! = 0)
+        if(fatorial != 0)
+        {
+            S = S + (i / fatorial); // adiciona o termo i / (2*i)!
+        }
+    }
+
+    // exibe o valor da série com 6 casas decimais
+    printf("O valor da serie S, com 5 termos, eh: %.6f\n", S);
+
+    system("pause"); // pausa o programa (útil no Windows)
+    return 0;        // indica que o programa terminou corretamente
+}
+
