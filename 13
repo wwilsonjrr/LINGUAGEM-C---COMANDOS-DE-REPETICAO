@@ -1,0 +1,32 @@
+/*  13. Faça um programa que leia um numero inteiro positivo par N e imprima todos os numeros
+pares de 0 até N em ordem crescente.  */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i = 0; // inicialização
+
+    int n; // armazena o número
+
+    printf("Digite um numero inteiro positivo par qualquer: \n");
+    scanf("%d", &n);
+
+    if ((n % 2 != 0)&&(n < 0))
+    {
+        printf("Numero invalido. Digite apenas numeros positivos pares.\n");
+    }
+    else
+    {
+        while (i <= n)
+        {
+            printf("%d \n", i);
+            i+= 2;   // incrementa até chegar em N
+        }
+    }
+
+    system("pause");
+    return 0;
+}
