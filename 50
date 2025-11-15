@@ -1,0 +1,43 @@
+/*
+50. Chico tem 1,50 metro e cresce 2 centímetros por ano,
+enquanto Zé tem 1,10 metro e cresce 3 centímetros por ano.
+
+Escreva um programa que calcule e imprima quantos anos serão
+necessários para que Zé seja maior que Chico.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    // Declaração das variáveis
+    float alturaChico = 1.50;   // Altura inicial de Chico (em metros)
+    float alturaZe = 1.10;      // Altura inicial de Zé (em metros)
+    float crescimentoChico = 0.02; // Crescimento anual de Chico (2 cm = 0,02 m)
+    float crescimentoZe = 0.03;    // Crescimento anual de Zé (3 cm = 0,03 m)
+    int anos = 0;              // Contador de anos necessários
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   CRESCIMENTO DE CHICO E ZE\n");
+    printf("=============================================\n\n");
+
+    // Laço que repete enquanto Zé for menor ou igual a Chico
+    while (alturaZe <= alturaChico)
+    {
+        alturaChico += crescimentoChico;  // Chico cresce 2 cm por ano
+        alturaZe += crescimentoZe;        // Zé cresce 3 cm por ano
+        anos++;                           // Incrementa o contador de anos  // anos é o incremento, ele vai contando cada interação das somas
+    }
+
+    // Exibe o resultado final
+    printf("Serao necessarios %d anos para que Ze seja mais alto que Chico.\n", anos);
+    printf("Altura final de Ze: %.2f m\n", alturaZe);
+    printf("Altura final de Chico: %.2f m\n", alturaChico);
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
