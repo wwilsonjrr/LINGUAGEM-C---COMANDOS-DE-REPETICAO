@@ -1,0 +1,49 @@
+/*
+34. Faça um programa que calcule o menor número divisível por cada um dos números de 1 a 20.
+Exemplo: 2520 é o menor número que pode ser dividido por cada um dos números de 1 a 10, sem sobrar resto.
+Solução: calcular o MMC acumulado de 1,2,3,...,20 usando o algoritmo de Euclides para o MDC.
+*/
+
+#include <stdio.h>    // Inclui a biblioteca padrão de entrada/saída (printf, scanf)
+#include <stdlib.h>   // Inclui a biblioteca padrão (usada aqui para system("pause") no Windows)
+
+/* ------------------ DECLARAÇÃO DAS FUNÇÕES ------------------ */
+
+long long int mdc(long long int a, long long int b)  // Declara a função mdc que recebe dois inteiros long long e retorna o MDC
+{                                                    // Início do corpo da função mdc
+    while (b != 0)                                   // Enquanto b for diferente de zero, ainda há resto e precisamos continuar
+    {                                                // Início do bloco do laço while
+        long long int temp = b;                      // Guarda o valor atual de b em temp (pois b será modificado na próxima linha)
+        b = a % b;                                   // Atualiza b com o resto da divisão de a por b (passo do algoritmo de Euclides)
+        a = temp;                                    // Atribui a a o valor antigo de b (agora seguimos com o par (b, resto))
+    }                                                // Fim do bloco do laço while
+    return a;                                        // Quando b vira 0, a contém o MDC; retorna o valor
+}                                                    // Fim do corpo da função mdc
+
+long long int mmc(long long int a, long long int b)  // Declara a função mmc que calcula o MMC de a e b
+{                                                    // Início do corpo da função mmc
+    return (a * b) / mdc(a, b);                      // Usa a fórmula MMC(a,b) = (a*b)/MDC(a,b); atenção: a*b pode ser grande
+}                                                    // Fim do corpo da função mmc
+
+/* ------------------ FUNÇÃO PRINCIPAL ------------------ */
+
+int main(void)                                       // Função principal do programa, sem argumentos
+{                                                    // Início do corpo da função main
+    long long int resultado = 1;                     // Variável que acumula o MMC; começa em 1 (neutro do MMC)
+
+    printf("=============================================\n");   // Imprime linha decorativa do título
+    printf("   MENOR NUMERO DIVISIVEL POR 1 A 20\n");            // Imprime o título do programa
+    printf("=============================================\n\n"); // Imprime linha decorativa e uma linha em branco
+
+    for (int i = 1; i <= 20; i++)                    // Laço que percorre os valores de 1 até 20 (inclusive)
+    {                                                // Início do bloco do for
+        resultado = mmc(resultado, i);               // Atualiza o acumulado: resultado <- MMC(resultado, i)
+        // Dica: se quiser ver o acúmulo passo a passo, descomente a linha abaixo.
+        // printf("MMC(1..%d) = %lld\n", i, resultado);          // Mostra o MMC parcial após incluir i
+    }                                                // Fim do bloco do for
+
+    printf("O menor numero divisivel por todos os numeros de 1 a 20 eh: %lld\n", resultado); // Imprime o resultado final (usar %lld para long long)
+
+    system("pause");                                  // Mantém a janela aberta no Windows até pressionar uma tecla (remova no Linux/macOS)
+    return 0;                                         // Retorna 0 indicando término bem-sucedido do programa
+}                                                    // Fim do corpo da função main
