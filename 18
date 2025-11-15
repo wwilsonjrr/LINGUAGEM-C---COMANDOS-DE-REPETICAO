@@ -1,0 +1,63 @@
+/*
+18. Escreva um algoritmo que leia certa quantidade de numeros e imprima o maior deles e
+quantas vezes o maior numero foi lido. A quantidade de números a serem lidos deve ser
+fornecida pelo usuario.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int qtd;          // quantidade de números informados pelo usuário
+    int i;            // contador do laço
+    float valor;      // número digitado pelo usuário
+    float maior;      // maior número encontrado
+    int somaMaior = 0; // contador de quantas vezes o maior apareceu
+
+    printf("Digite a quantidade de numeros que deseja ler: ");
+    scanf("%d", &qtd); // deve ser %d, pois qtd é um inteiro
+
+    if (qtd <= 0)
+    {
+        printf("Quantidade invalida.\n");
+        return 0; // encerra o programa se a quantidade for inválida
+    }
+
+    for (i = 1; i <= qtd; i++)
+    {
+        printf("Digite o %do. numero: ", i);
+        scanf("%f", &valor);
+
+        if (i == 1)
+        {
+            // Primeiro número: define como o maior
+            maior = valor;
+            somaMaior = 1;
+        }
+        else
+        {
+            if (valor > maior)
+            {
+                // Novo valor maior encontrado
+                maior = valor;
+                somaMaior = 1;
+            }
+            else if (valor == maior)
+            {
+                // Mesmo valor do atual maior
+                somaMaior++;
+            }
+            else
+            {
+                // Valor menor, não faz nada
+            }
+        }
+    }
+
+    printf("\nO maior numero digitado foi: %.2f\n", maior);
+    printf("Ele apareceu %d vez(es).\n", somaMaior);
+
+    system("pause");
+    return 0;
+}
