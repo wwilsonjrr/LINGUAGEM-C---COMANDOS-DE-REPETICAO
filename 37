@@ -1,0 +1,57 @@
+/*
+37. Escreva um programa que verifique quais números entre 1000 e 9999 (inclusive)
+possuem a seguinte propriedade:
+
+A soma dos dois dígitos de mais baixa ordem com os dois dígitos de mais alta ordem,
+elevada ao quadrado, é igual ao próprio número.
+
+Exemplo:
+Para o número 3025:
+   30 + 25 = 55
+   55² = 3025
+Logo, 3025 possui a propriedade.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int numero;       // Variável para o número analisado
+    int parteAlta;    // Parte dos dois primeiros dígitos (milhar e centena)
+    int parteBaixa;   // Parte dos dois últimos dígitos (dezena e unidade)
+    int soma;         // Soma das duas partes
+    int quadrado;     // Quadrado da soma
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("  NUMEROS ENTRE 1000 E 9999 COM A PROPRIEDADE ESPECIAL\n");
+    printf("=============================================\n\n");
+
+    // Laço que percorre todos os números de 1000 a 9999
+    for (numero = 1000; numero <= 9999; numero++)
+    {
+
+        // Divide o número em duas partes:
+        // - parteAlta: primeiros dois dígitos (divisão inteira por 100)
+        // - parteBaixa: últimos dois dígitos (resto da divisão por 100)
+        parteAlta = numero / 100;
+        parteBaixa = numero % 100;
+
+        // Soma das duas partes
+        soma = parteAlta + parteBaixa;
+
+        // Calcula o quadrado da soma
+        quadrado = soma * soma;
+
+        // Verifica se o quadrado é igual ao número original
+        if (quadrado == numero)
+        {
+            printf("%d possui a propriedade especial.\n", numero);
+        }
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
