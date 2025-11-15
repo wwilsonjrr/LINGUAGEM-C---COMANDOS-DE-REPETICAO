@@ -1,0 +1,36 @@
+/*  10. Faça um programa que calcule e mostre a soma dos 50 primeiros numeros pares
+
+
+        A variável i é o contador de iterações (vai de 1 até 50).
+
+        A variável n representa o número par atual (2, 4, 6, 8...).
+
+        por isso não posso fazer i += 2
+
+*/
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i = 1; // inicialização
+
+    int soma = 0; // acumulador
+
+    int n = 2; // primeiro numero par
+
+    while(i <= 50)
+    {
+        soma = soma + 2; // soma o número par
+        n = n + 2; // próximo par
+        i++; // incrementa
+    }
+
+    printf("\O resultado da soma dos 50 primeiros numeros pares eh: %d\n", soma);
+
+    system("pause");
+    return 0;
+}
