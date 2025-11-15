@@ -1,0 +1,44 @@
+/*
+39. Faça um programa que calcule a área de um triângulo, cuja base e altura são fornecidas
+pelo usuário. Esse programa não pode permitir a entrada de dados inválidos, ou seja,
+medidas menores ou iguais a 0.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    float base, altura, area;  // Declaração das variáveis
+
+    // Mensagem inicial para o usuário
+    printf("=============================================\n");
+    printf("   CALCULO DA AREA DE UM TRIANGULO\n");
+    printf("=============================================\n\n");
+
+    // Solicita a entrada dos valores de base e altura
+    printf("Digite o valor da base do triangulo: ");
+    scanf("%f", &base);
+
+    printf("Digite o valor da altura do triangulo: ");
+    scanf("%f", &altura);
+
+    // Verifica se os valores são válidos (maiores que zero)
+    if (base <= 0 || altura <= 0)
+    {
+        printf("\nErro: medidas invalidas! Base e altura devem ser maiores que zero.\n");
+    }
+    else
+    {
+        // Calcula a área do triângulo usando a fórmula: (base * altura) / 2
+        area = (base * altura) / 2;
+
+        // Exibe o resultado da área
+        printf("\nA area do triangulo eh: %.2f\n", area);
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
