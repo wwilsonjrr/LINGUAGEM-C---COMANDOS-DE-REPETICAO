@@ -1,0 +1,40 @@
+/*
+23. Faça um algoritmo que leia um número positivo e imprima seus divisores.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N; // armazena número digitado
+    int i; // contador
+
+    printf("=====================================\n");
+    printf("VERIFICACAO DE DIVISORES DE UM NUMERO\n");
+    printf("=====================================\n");
+
+    printf("Digite um numero inteiro positivo:   ");
+    scanf("%d", &N);
+
+    // verifica se o número é positivo
+    if(N <= 0)
+    {
+        printf("\nNumero invalido! Por favor, digite um numero positivo.\n");
+    }
+    else
+    {
+        printf("\nOs divisores de %d sao: \n", N);
+
+        for(i = 1; i <= N; i++)// percorre de 1 até o número digitado
+        {
+            if(N % i == 0)// se o resto da divisão for zero, é divisor
+            {
+                printf("%d \n", i); // imprime o divisor
+            }
+        }
+        printf("\n"); // pula uma linha ao final da listagem dos divisores
+    }
+    system("pause");
+    return 0;
+}
