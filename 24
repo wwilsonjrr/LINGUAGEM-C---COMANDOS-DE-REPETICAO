@@ -1,0 +1,53 @@
+/*
+24. Escreva um programa que leia um número inteiro e calcule a soma de todos os divisores
+desse número, com exceção dele próprio.
+Exemplo: a soma dos divisores do número 66 é 1 + 2 + 3 + 6 + 11 + 22 + 33 = 78
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int numero;         // Variável que armazenará o número digitado pelo usuário
+    int soma = 0;       // Variável que acumulará a soma dos divisores
+
+    // Mensagem inicial para o usuário
+    printf("=============================================\n");
+    printf("   SOMA DOS DIVISORES DE UM NUMERO INTEIRO\n");
+    printf("=============================================\n\n");
+
+    // Solicita ao usuário que digite um número inteiro positivo
+    printf("Digite um numero inteiro positivo: ");
+    scanf("%d", &numero);  // Lê o número digitado e armazena em 'numero'
+
+    // Verifica se o número é positivo
+    if (numero <= 0)
+    {
+        printf("\nNumero invalido! Por favor, digite um numero positivo.\n");
+    }
+    else
+    {
+        // Exibe os divisores e inicia o cálculo da soma
+        printf("\nOs divisores de %d sao: \n", numero);
+
+        // Laço de repetição para percorrer todos os números de 1 até numero - 1
+        for (int i = 1; i < numero; i++)
+        {
+            // Verifica se 'i' é divisor do número
+            if (numero % i == 0)
+            {
+                printf("%d \n", i);  // Exibe o divisor encontrado
+                soma += i;         // Adiciona o divisor à soma
+            }
+        }
+
+        // Exibe o resultado da soma de todos os divisores
+        printf("\n\nA soma dos divisores (excluindo o proprio numero) eh: %d\n", soma);
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou com sucesso
+}
+
