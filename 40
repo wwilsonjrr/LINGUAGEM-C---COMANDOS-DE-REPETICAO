@@ -1,0 +1,65 @@
+/*
+40. Elabore um programa que faça leitura de vários números inteiros,
+até que se digite um número negativo.
+O programa tem que retornar o maior e o menor número lido.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int numero;        // Variável para armazenar o número digitado
+    int maior, menor;  // Variáveis para armazenar o maior e o menor número
+
+    // Mensagem inicial para o usuário
+    printf("=============================================\n");
+    printf("   LEITURA DE NUMEROS ATE DIGITAR NEGATIVO\n");
+    printf("=============================================\n\n");
+
+    printf("Digite um numero (negativo para encerrar): ");
+    scanf("%d", &numero);
+
+    // Caso o primeiro número já seja negativo, o programa encerra imediatamente
+    if (numero < 0)
+    {
+        printf("\nNenhum numero valido foi digitado.\n");
+    }
+    else
+    {
+        // Inicializa maior e menor com o primeiro número válido digitado
+        maior = numero;
+        menor = numero;
+
+        // Continua lendo enquanto o número for não-negativo
+        while (1)
+        {
+            printf("Digite outro numero (negativo para encerrar): ");
+            scanf("%d", &numero);
+
+            if (numero < 0)
+            {
+                break;  // Encerra o laço se um número negativo for digitado
+            }
+
+            // Atualiza o maior e o menor número conforme necessário
+            if (numero > maior)
+            {
+                maior = numero;
+            }
+            if (numero < menor)
+            {
+                menor = numero;
+            }
+        }
+
+        // Exibe o resultado final
+        printf("\nMaior numero digitado: %d\n", maior);
+        printf("Menor numero digitado: %d\n", menor);
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
