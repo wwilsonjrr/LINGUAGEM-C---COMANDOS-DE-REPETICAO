@@ -1,0 +1,48 @@
+/*  9. Faça um programa que leia um número inteiro N e depois imprima os N primeiros números naturais ímpares.
+
+       Você precisa imprimir os N primeiros ímpares, e não testar se o número digitado é ímpar.
+
+*/
+
+
+/*
+9. Faça um programa que leia um número inteiro N
+   e depois imprima os N primeiros números naturais ímpares.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i = 1;      // contador que percorre os números naturais
+    int soma = 0;   // conta quantos ímpares já foram mostrados
+    int num;        // número N digitado pelo usuário
+
+    printf("Digite um numero inteiro positivo: \n");
+    scanf("%d", &num); // lê N
+
+    // verifica se o número é válido
+    if (num <= 0)
+    {
+        printf("Valor invalido! Digite um numero positivo.\n");
+    }
+    else
+    {
+        printf("\nOs %d primeiros numeros impares sao:\n", num);
+
+        // enquanto não imprimir N números ímpares
+        while (i < num)
+        {
+            if (i % 2 != 0) // verifica se o número é ímpar
+            {
+                printf("%d\n", i);
+                i++; // incrementa a contagem de ímpares
+            }
+            i++; // passa para o próximo número natural
+        }
+    }
+
+    system("pause");
+    return 0;
+}
