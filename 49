@@ -1,0 +1,54 @@
+/*
+49. O funcionário chamado Carlos tem um colega chamado João que recebe um salário que
+equivale a um terço do seu salário. Carlos gosta de fazer aplicações na caderneta de poupança
+e vai aplicar seu salário integralmente nela, pois está rendendo 2% ao mês.
+João aplicará seu salário integralmente no fundo de renda fixa, que está rendendo 5% ao mês.
+
+Construa um programa que deverá calcular e mostrar a quantidade de meses necessários para
+que o valor pertencente a João iguale ou ultrapasse o valor pertencente a Carlos.
+Teste com outros valores para as taxas.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+#include <math.h>    // Biblioteca matemática (para cálculos de potência, se necessário)
+
+int main()
+{
+
+    float salarioCarlos, salarioJoao;     // Salários iniciais
+    float taxaCarlos = 0.02;              // 2% de rendimento ao mês
+    float taxaJoao = 0.05;                // 5% de rendimento ao mês
+    int meses = 0;                        // Contador de meses
+
+    // Solicita o salário de Carlos
+    printf("Digite o salario de Carlos: R$ ");
+    scanf("%f", &salarioCarlos);
+
+    // Calcula o salário de João (1/3 do salário de Carlos)
+    salarioJoao = salarioCarlos / 3.0;
+
+    // Mensagem inicial
+    printf("\nCarlos aplica R$ %.2f com rendimento de 2%% ao mes.\n", salarioCarlos);
+    printf("Joao aplica R$ %.2f com rendimento de 5%% ao mes.\n\n", salarioJoao);
+
+    // Laço que simula o rendimento mensal até João ultrapassar Carlos
+    while (salarioJoao < salarioCarlos)
+    {
+        salarioCarlos += salarioCarlos * taxaCarlos;  // Carlos rende 2% ao mês
+        salarioJoao += salarioJoao * taxaJoao;        // João rende 5% ao mês
+        meses++;  // Incrementa o contador de meses
+    }
+
+    // Exibe o resultado final
+    printf("=============================================\n");
+    printf("   RESULTADO DA SIMULACAO\n");
+    printf("=============================================\n");
+    printf("Foram necessarios %d meses para que o valor de Joao igualasse ou ultrapassasse o de Carlos.\n", meses);
+    printf("Valor final de Carlos: R$ %.2f\n", salarioCarlos);
+    printf("Valor final de Joao:   R$ %.2f\n", salarioJoao);
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
