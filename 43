@@ -1,0 +1,56 @@
+/*
+43. Faça um programa que leia um número indeterminado de idades de indivíduos
+(pare quando for informada a idade 0) e calcule a idade média desse grupo.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int idade;         // Variável para armazenar cada idade digitada
+    int soma = 0;      // Variável para somar todas as idades
+    int contador = 0;  // Contador de quantas idades foram digitadas
+    float media;       // Variável para armazenar a média final
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   CALCULO DA IDADE MEDIA DE UM GRUPO\n");
+    printf("=============================================\n\n");
+
+    // Laço de repetição para leitura das idades
+    while (1)
+    {
+        printf("Digite a idade (0 para encerrar): ");
+        scanf("%d", &idade);
+
+        // Condição de parada — quando o usuário digitar 0, o programa encerra a leitura
+        if (idade == 0)
+        {
+            break; // sai do laço while
+        }
+
+        // Acumula a idade digitada e incrementa o contador
+        soma += idade;
+        contador++;
+    }
+
+    // Verifica se pelo menos uma idade válida foi digitada
+    if (contador > 0)
+    {
+        media = (float)soma / contador;  // Cálculo da média (conversão para float)
+        printf("\nIdades lidas: %d\n", contador);
+        printf("Soma das idades: %d\n", soma);
+        printf("Idade media do grupo: %.2f\n", media);
+    }
+    else
+    {
+        // Caso o usuário digite 0 logo de início
+        printf("\nNenhuma idade valida foi informada.\n");
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
