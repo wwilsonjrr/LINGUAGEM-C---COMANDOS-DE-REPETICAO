@@ -1,0 +1,56 @@
+/*
+26. Faça um algoritmo que encontre o primeiro múltiplo de 11, 13 ou 17 após um número dado.
+
+O enunciado diz:
+
+"Encontre o primeiro múltiplo de 11, 13 ou 17 após um número dado."
+
+Isso significa que não queremos testar o próprio número digitado, mas sim os números seguintes.
+
+🔹 Exemplo:
+Se o usuário digitar n = 50
+→ o programa precisa verificar 51, 52, 53, ...
+até achar o primeiro número que seja múltiplo de 11, 13 ou 17.
+
+
+| Local          | Função                                                   | Necessário? |
+| -------------- | -------------------------------------------------------- | ----------- |
+| Antes do laço  | Pular o número digitado e começar a busca **no próximo** | ✅ Sim       |
+| Dentro do laço | Avançar número a número até encontrar o múltiplo         | ✅ Sim       |
+
+
+*/
+
+#include <stdio.h>   // biblioteca padrão de entrada e saída
+#include <stdlib.h>  // biblioteca usada para system("pause")
+
+int main()
+{
+    int n; // variável para armazenar o número informado pelo usuário
+
+    // solicita que o usuário digite um número inteiro
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &n);
+
+    // incrementa. Pular o número digitado e começar a busca **no próximo**
+    n++;
+
+    // laço infinito: continuará até que encontre um número que seja múltiplo de 11, 13 ou 17
+    while(1)
+    {
+        // verifica se o número atual é divisível por 11, 13 ou 17
+        if(n % 11 == 0 || n % 13 == 0 || n % 17 == 0)
+        {
+            // se for múltiplo, exibe o resultado na tela
+            printf("O primeiro multiplo de 11, 13 ou 17 apos o numero dado eh: %d\n", n);
+            break; // sai do loop, pois já encontramos o número desejado
+        }
+
+        // Avançar número a número até encontrar o múltiplo
+        n++;
+    }
+
+    system("pause"); // pausa o programa (útil no Windows para não fechar a janela imediatamente)
+    return 0; // indica que o programa terminou corretamente
+}
+
