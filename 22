@@ -1,0 +1,65 @@
+/*
+22. Escreva um programa completo que permita a qualquer aluno introduzir, pelo teclado,
+uma sequência arbitrária de notas (válidas no intervalo de 10 a 20) e que mostre na tela,
+como resultado, a correspondente média aritmética. O número de notas com que o aluno
+pretenda efetuar o cálculo não será fornecido ao programa, o qual terminará quando for
+introduzido um valor que não seja válido como nota de aprovação.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para funções de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão para funções como system("pause")
+
+int main()
+{
+
+    float nota;         // Variável para armazenar cada nota digitada
+    float soma = 0;     // Variável acumuladora que armazenará a soma de todas as notas válidas
+    int i = 0;          // Contador que indica quantas notas válidas foram digitadas // declaro i = 0 como inicialização, pois poder não haver nenhuma nota valida
+    float media;        // Variável que armazenará a média final
+
+    // Mensagens iniciais para orientar o usuário
+    printf("=============================================\n");
+    printf("   CALCULO DA MEDIA ARITMETICA DAS NOTAS\n");
+    printf("=============================================\n\n");
+    printf("Digite notas entre 10 e 20.\n");
+    printf("Digite um valor fora desse intervalo para encerrar.\n\n");
+
+    // Laço de repetição infinito — será encerrado com um 'break'
+    while (1)
+    {
+        printf("Digite uma nota: ");    // Solicita a entrada de uma nota
+        scanf("%f", &nota);             // Lê o valor digitado e armazena em 'nota'
+
+        // Verifica se a nota está dentro do intervalo válido (de 10 a 20)
+        if (nota >= 10 && nota <= 20)
+        {
+            soma += nota;     // Adiciona a nota válida à soma total
+            i++;       // Incrementa o contador de notas válidas
+        }
+        else
+        {
+            // Caso o valor digitado esteja fora do intervalo, encerra o programa
+            printf("\nValor invalido digitado! Encerrando o programa...\n");
+            break;            // Sai do laço while
+        }
+    }
+
+    // Após sair do laço, verifica se o usuário digitou pelo menos uma nota válida
+    if (i > 0)
+    {
+        media = soma / i;   // Calcula a média aritmética
+        printf("\n=============================================\n");
+        printf("Total de notas validas: %d\n", i);  // Exibe quantas notas foram válidas
+        printf("Media aritmetica: %.2f\n", media);         // Exibe a média com 2 casas decimais
+        printf("=============================================\n");
+    }
+    else
+    {
+        // Caso nenhuma nota válida tenha sido inserida
+        printf("\nNenhuma nota valida foi digitada.\n");
+    }
+
+    system("pause");  // Mantém a janela aberta até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou com sucesso
+}
+
