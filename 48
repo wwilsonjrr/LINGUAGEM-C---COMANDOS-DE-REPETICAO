@@ -1,0 +1,46 @@
+/*
+48. Faça um programa que some os termos de valor par da sequência de Fibonacci,
+cujos valores não ultrapassem quatro milhões.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    // Declaração das variáveis
+    long int a = 1;          // Primeiro termo da sequência
+    long int b = 2;          // Segundo termo da sequência
+    long int proximo;        // Variável para armazenar o próximo termo
+    long int soma = 0;       // Variável para armazenar a soma dos termos pares
+    long int limite = 4000000; // Limite máximo (quatro milhões)
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   SOMA DOS TERMOS PARES DA SEQUENCIA DE FIBONACCI\n");
+    printf("=============================================\n\n");
+
+    // Enquanto o termo atual for menor ou igual ao limite
+    while (a <= limite)
+    {
+
+        // Verifica se o termo atual é par
+        if (a % 2 == 0)
+        {
+            soma += a;  // Se for par, adiciona à soma
+        }
+
+        // Calcula o próximo termo da sequência de Fibonacci
+        proximo = a + b;
+        a = b;       // Atualiza o termo anterior
+        b = proximo; // Atualiza o termo atual
+    }
+
+    // Exibe o resultado final
+    printf("A soma dos termos pares da sequencia de Fibonacci ate 4 milhoes eh: %ld\n", soma);
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
