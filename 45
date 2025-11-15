@@ -1,0 +1,70 @@
+/*
+45. Faça um algoritmo que converta uma velocidade expressa em km/h para m/s e vice-versa.
+Você deve criar um menu com as duas opções de conversão e com uma opção para finalizar o programa.
+O usuário poderá fazer quantas conversões desejar, sendo que o programa só será finalizado
+quando a opção de finalizar for escolhida.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int opcao;           // Variável para armazenar a opção do menu
+    float velocidade;    // Variável para armazenar o valor digitado pelo usuário
+    float convertido;    // Variável para armazenar o resultado da conversão
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   CONVERSOR DE VELOCIDADE (KM/H <-> M/S)\n");
+    printf("=============================================\n\n");
+
+    // Laço principal: o programa só termina quando o usuário escolher a opção 3
+    while (1)
+    {
+
+        // Exibição do menu
+        printf("\nEscolha uma opcao:\n");
+        printf("1 - Converter de km/h para m/s\n");
+        printf("2 - Converter de m/s para km/h\n");
+        printf("3 - Finalizar o programa\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        // Estrutura de decisão para tratar a escolha do usuário
+        if (opcao == 1)
+        {
+            // Conversão de km/h para m/s
+            printf("\nDigite a velocidade em km/h: ");
+            scanf("%f", &velocidade);
+
+            convertido = velocidade / 3.6;  // Fórmula da conversão
+            printf("Velocidade em m/s: %.2f\n", convertido);
+        }
+        else if (opcao == 2)
+        {
+            // Conversão de m/s para km/h
+            printf("\nDigite a velocidade em m/s: ");
+            scanf("%f", &velocidade);
+
+            convertido = velocidade * 3.6;  // Fórmula da conversão
+            printf("Velocidade em km/h: %.2f\n", convertido);
+        }
+        else if (opcao == 3)
+        {
+            // Opção para encerrar o programa
+            printf("\nEncerrando o programa...\n");
+            break;  // Sai do laço while
+        }
+        else
+        {
+            // Caso o usuário digite uma opção inválida
+            printf("\nOpcao invalida! Tente novamente.\n");
+        }
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
