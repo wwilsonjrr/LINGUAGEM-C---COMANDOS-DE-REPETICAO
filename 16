@@ -1,0 +1,35 @@
+/*  16. Faça um programa que leia um numero inteiro positivo ímpar N e imprima todos os
+numeros ímpares de 1 até N em ordem decrescente.  */
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i; // contador // não devo atribuir i = n antes de declarar n e armazenar o valor
+
+    int n; // armazena número
+
+    printf("Digite um numero inteiro positivo impar qualquer: \n");
+    scanf("%d", &n);
+
+    if ((n % 2 == 0) && (n <= 0))
+    {
+        printf("Numero invalido. Digite apenas numeros positivos impares.\n");
+    }
+    else
+    {
+        int i = n;
+        while (i >= 0)
+        {
+            printf("%d \n", i);
+            i-= 2;   // incrementa até chegar em N
+        }
+    }
+
+    system("pause");
+    return 0;
+}
+
