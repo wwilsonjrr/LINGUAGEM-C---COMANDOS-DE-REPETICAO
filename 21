@@ -1,0 +1,51 @@
+/* 21. Faça um programa que receba dois números. Calcule e mostre:
+      - a soma dos números pares desse intervalo, incluindo os digitados;
+      - a multiplicação dos números ímpares desse intervalo, incluindo os digitados. */
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída
+#include <stdlib.h>  // Biblioteca para usar funções como system("pause")
+
+int main()
+{
+    int num1, num2;         // Variáveis para armazenar os dois números do intervalo
+    int i;                  // Variável de controle do laço
+    int soma_pares = 0;     // Acumulador para a soma dos números pares
+    int mult_impares = 1;   // Acumulador para a multiplicação dos ímpares
+
+    // Entrada dos dois números
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &num1);
+
+    printf("Digite o segundo numero: ");
+    scanf("%d", &num2);
+
+    // Se num1 for maior que num2, troca os valores (para garantir que o intervalo está correto)
+    if (num1 > num2)
+    {
+        int temp = num1; // Guarda temporariamente o valor de num1
+        num1 = num2; // Coloca o valor de num2 em num1
+        num2 = temp; // Coloca o valor antigo de num1 em num2
+    }
+
+    // Laço para percorrer todos os números do intervalo [num1, num2]
+    for (i = num1; i <= num2; i++)
+    {
+        // Verifica se o número é par
+        if (i % 2 == 0)
+        {
+            soma_pares = soma_pares + i;  // Acumula na soma dos pares
+        }
+        else
+        {
+            mult_impares = mult_impares * i;  // Acumula na multiplicação dos ímpares
+        }
+    }
+
+    // Exibe os resultados finais
+    printf("\nSoma dos pares = %d\n", soma_pares);
+    printf("Multiplicacao dos impares = %d\n", mult_impares);
+
+    system("pause"); // Pausa a execução no Windows
+    return 0;        // Indica que o programa terminou corretamente
+}
+
