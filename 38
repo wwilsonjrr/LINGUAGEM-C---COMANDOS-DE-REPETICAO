@@ -1,0 +1,47 @@
+/*
+38. Faça um programa que calcule o terno pitagórico a, b, c, para o qual a + b + c = 1000.
+Um terno pitagórico é um conjunto de três números naturais, a, b, c, para a qual:
+
+            a² + b² = c²
+
+Por exemplo:
+            3² + 4² = 9 + 16 = 25 = 5²
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int a, b, c;  // Declaração das variáveis que compõem o terno pitagórico
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   BUSCA DO TERNO PITAGORICO COM A+B+C = 1000\n");
+    printf("=============================================\n\n");
+
+    // Percorre os possíveis valores de a, b e c
+    // Sabemos que a < b < c, então reduzimos o espaço de busca
+    for (a = 1; a < 1000; a++)
+    {
+        for (b = a + 1; b < 1000; b++)
+        {
+            c = 1000 - a - b;  // Calcula c a partir da condição a + b + c = 1000
+
+            // Verifica se o trio (a, b, c) forma um terno pitagórico
+            if ((a * a) + (b * b) == (c * c))
+            {
+                printf("Terno pitagorico encontrado:\n");
+                printf("a = %d, b = %d, c = %d\n", a, b, c);
+                printf("Verificacao: %d^2 + %d^2 = %d^2 --> %d + %d = %d\n",
+                       a, b, c, a*a, b*b, c*c);
+                printf("\nProduto a*b*c = %d\n", a * b * c);
+            }
+        }
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
