@@ -1,0 +1,60 @@
+/*
+46. Faça um programa que gera um número aleatório de 1 a 1000.
+O usuário deve tentar acertar qual o número foi gerado; a cada tentativa,
+o programa deverá informar se o chute é menor ou maior que o número gerado.
+O programa acaba quando o usuário acerta o número gerado.
+O programa deve informar em quantas tentativas o número foi descoberto.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Necessária para as funções rand(), srand(), system("pause")
+#include <time.h>    // Necessária para gerar números aleatórios diferentes (time)
+
+int main()
+{
+
+    int numeroSecreto;   // Armazena o número aleatório gerado pelo computador
+    int chute;           // Armazena o número digitado pelo usuário
+    int tentativas = 0;  // Conta quantas tentativas o usuário fez
+
+    // Inicializa o gerador de números aleatórios com base no tempo atual
+    srand(time(NULL));
+
+    // Gera um número aleatório entre 1 e 1000
+    numeroSecreto = rand() % 1000 + 1;
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("     JOGO DE ADIVINHACAO - NUMERO SECRETO\n");
+    printf("=============================================\n\n");
+    printf("Tente adivinhar o numero gerado (entre 1 e 1000)\n\n");
+
+    // Laço principal do jogo
+    do
+    {
+        printf("Digite seu chute: ");
+        scanf("%d", &chute);   // Lê o número digitado pelo usuário
+        tentativas++;          // Incrementa o contador de tentativas
+
+        // Verifica se o chute é menor, maior ou igual ao número secreto
+        if (chute < numeroSecreto)
+        {
+            printf("O numero secreto eh MAIOR que %d.\n\n", chute);
+        }
+        else if (chute > numeroSecreto)
+        {
+            printf("O numero secreto eh MENOR que %d.\n\n", chute);
+        }
+        else
+        {
+            printf("\nParabens! Voce acertou o numero!\n");
+            printf("O numero secreto era: %d\n", numeroSecreto);
+            printf("Numero de tentativas: %d\n", tentativas);
+        }
+
+    } while (chute != numeroSecreto);  // O jogo só termina quando o número for adivinhado
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
