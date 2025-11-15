@@ -1,0 +1,43 @@
+/* 19. Escreva um algoritmo que leia um numero inteiro entre 100 e 999
+   e imprima na saída cada um dos algarismos que compoem o número. */
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída
+#include <stdlib.h>  // Biblioteca para usar funções como system("pause")
+
+int main()
+{
+    int numero;      // Variável para armazenar o número digitado
+    int centena;     // Variável para o algarismo das centenas
+    int dezena;      // Variável para o algarismo das dezenas
+    int unidade;     // Variável para o algarismo das unidades
+
+    // Solicita ao usuário que digite um número entre 100 e 999
+    printf("Digite um numero inteiro entre 100 e 999: ");
+    scanf("%d", &numero); // Lê o valor digitado e armazena em 'numero'
+
+    // Verifica se o número está dentro do intervalo permitido
+    if (numero < 100 || numero > 999)
+    {
+        printf("Numero invalido! Digite apenas entre 100 e 999.\n");
+    }
+    else
+    {
+        // Calcula o algarismo das centenas (divisão inteira por 100)
+        centena = (numero / 100) % 100;
+
+        // Calcula o algarismo das dezenas (divide por 10 e pega o resto da divisão por 10)
+        dezena = (numero / 10) % 10;
+
+        // Calcula o algarismo das unidades (resto da divisão por 10)
+        unidade = (numero/1) % 10;
+
+        // Exibe cada algarismo separadamente
+        printf("Centena: %d\n", centena);
+        printf("Dezena: %d\n", dezena);
+        printf("Unidade: %d\n", unidade);
+    }
+
+    system("pause"); // Pausa a execução (funciona no Windows)
+    return 0;        // Indica que o programa terminou corretamente
+}
+
