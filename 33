@@ -1,0 +1,66 @@
+/*
+33. Dados n e dois números inteiros positivos, i e j, diferentes de 0,
+imprimir em ordem crescente os n primeiros números naturais
+que são múltiplos de i ou de j ou de ambos.
+
+Exemplo:
+Para n = 6, i = 2 e j = 3
+a saída deverá ser: 0, 2, 3, 4, 6, 8
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int n, i, j;       // Declara as variáveis n (quantidade), i e j (divisores)
+    int contador = 0;  // Contador para controlar quantos números já foram encontrados
+    int numero = 0;    // Variável para testar os números naturais (a partir de 0)
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   MULTIPLOS DE i OU j EM ORDEM CRESCENTE\n");
+    printf("=============================================\n\n");
+
+    // Solicita os valores de n, i e j ao usuário
+    printf("Digite o valor de n (quantidade de numeros): ");
+    scanf("%d", &n);
+
+    printf("Digite o valor de i (inteiro positivo e diferente de 0): ");
+    scanf("%d", &i);
+
+    printf("Digite o valor de j (inteiro positivo e diferente de 0): ");
+    scanf("%d", &j);
+
+    // Verifica se os valores informados são válidos
+    if (n <= 0 || i <= 0 || j <= 0)
+    {
+        printf("\nValores invalidos! Todos devem ser positivos e diferentes de zero.\n");
+    }
+    else
+    {
+        printf("\nOs %d primeiros numeros naturais multiplos de %d ou %d sao:\n", n, i, j);
+
+        // Laço que continua até encontrar n números válidos
+        while (contador < n) // 💡 Dica: sempre pense no while como “enquanto ainda não atingi meu objetivo”.
+                             // Por isso, o laço deve rodar enquanto contador ainda for menor que n
+        {
+
+            // Verifica se o número atual é múltiplo de i ou j
+            if (numero % i == 0 || numero % j == 0)
+            {
+                // Imprime o número encontrado
+                printf("%d\n", numero);
+
+                contador++;  // Incrementa o contador de números encontrados
+            }
+
+            numero++;  // Passa para o próximo número natural
+        }
+    }
+
+    system("pause");  // Mantém o console aberto até que o usuário pressione uma tecla
+    return 0;         // Indica que o programa terminou corretamente
+}
+
