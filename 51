@@ -1,0 +1,83 @@
+/*
+51. Um funcionário recebe aumento anual.
+Em 1995 foi contratado por 2000 reais.
+Em 1996 recebeu aumento de 1,5%.
+A partir de 1997, os aumentos sempre correspondem ao dobro do ano anterior.
+Faça um programa que determine o salário atual do funcionário.
+*/
+
+/*
+
+✔ float → %f
+✔ double → %lf
+✔ long double → %Lf
+
+
+Dentro da função main():
+return 0; → encerra com sucesso
+return 1; (ou outro valor) → encerra indicando erro / saída especial
+
+obs: Poderia usar while (1) ... break;   funciona também, mas não é necessário nesse caso.
+
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>
+
+int main()
+{
+
+    // Declaração de variáveis com tipo long double para evitar erro de overflow
+    long double salario = 2000.0;   // Salário inicial em 1995
+    long double aumento = 0.015;    // Aumento inicial de 1,5% (para 1996)
+    int ano = 1996;                 // Primeiro ano em que há aumento
+    int anoAtual;                   // Ano informado pelo usuário
+
+    // Entrada de dados
+    printf("Digite o ano atual: "); // Solicita ao usuário o ano desejado
+    scanf("%d", &anoAtual);         // Lê e armazena o valor digitado
+
+    // Verifica se o ano digitado é válido (não pode ser antes de 1995)
+    if (anoAtual < 1995)
+    {
+        printf("Ano invalido! Deve ser maior ou igual a 1995.\n");
+        return 1; // Encerra o programa com código de erro
+    }
+
+    // Cabeçalho da tabela de resultados
+    printf("\n=============================================\n");
+    printf("   CALCULO DO SALARIO DO FUNCIONARIO\n");
+    printf("=============================================\n");
+    printf("\nAno\tAumento(%%)\tSalario (R$)\n");
+    printf("---------------------------------------------\n");
+
+    // Laço que calcula o salário ano a ano até o ano atual informado
+    // e evita crescimento absurdo (limite de 1 bilhão)
+    while (ano <= anoAtual && salario < 1e9)
+    {
+
+        // Aplica o aumento do ano corrente
+        salario += salario * aumento;
+
+        // Exibe o resultado deste ano (ano, aumento e novo salário)
+        printf("%d\t%.2Lf\t\t%.2Lf\n", ano, aumento * 100, salario);
+
+        // A partir de 1997 o aumento dobra a cada ano
+        aumento *= 2;
+
+        // Avança para o próximo ano
+        ano++;
+    }
+
+    // Caso o salário tenha ultrapassado um valor absurdo, informa ao usuário
+    if (salario >= 1e9)
+    {
+        printf("\nO salario ultrapassou o limite calculavel!\n");
+    }
+
+    // Exibe o salário final do funcionário no ano informado
+    printf("\nSalario final em %d: R$ %.2Lf\n", anoAtual, salario);
+
+    // Finaliza o programa com sucesso
+    return 0;
+}
