@@ -1,0 +1,36 @@
+/*
+25. Faça um programa que some todos os números naturais abaixo de 1000
+que são múltiplos de 3 ou 5.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int soma = 0;   // Variável que acumulará a soma dos múltiplos
+
+    // Mensagem inicial para o usuário
+    printf("=============================================\n");
+    printf("   SOMA DOS MULTIPLOS DE 3 OU 5 ABAIXO DE 1000\n");
+    printf("=============================================\n\n");
+
+    // Laço de repetição que percorre todos os números naturais abaixo de 1000
+    for (int i = 0; i < 1000; i++)
+    {
+
+        // Verifica se o número é múltiplo de 3 ou de 5
+        if (i % 3 == 0 || i % 5 == 0)
+        {
+            soma += i;   // Adiciona o número à soma se a condição for verdadeira
+        }
+    }
+
+    // Exibe o resultado final
+    printf("A soma de todos os multiplos de 3 ou 5 abaixo de 1000 eh: %d\n", soma);
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Retorna 0 indicando que o programa terminou corretamente
+}
+
