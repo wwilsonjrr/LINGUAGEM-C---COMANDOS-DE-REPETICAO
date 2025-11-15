@@ -1,0 +1,35 @@
+/*  17. Faça um programa que leia um numero inteiro positivo n e calcule a soma dos n primeiros
+numeros naturais.   */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n; // armazena número
+    int i = 0; // inicialização
+    int soma = 0; // acumulador
+
+
+    printf("Digite um numero inteiro positivo qualquer: \n");
+    scanf("%d", &n);
+
+    if (n <= 0)
+    {
+        printf("Numero invalido. Digite apenas numeros inteiros positivos.\n");
+    }
+    else
+    {
+        while (i <= n)
+        {
+            soma = soma + i; // você nunca deve somar n dentro do laço, porque n é o limite, não o termo da soma.
+            i++;   // incrementa até chegar em N
+        }
+    }
+
+    printf("A soma dos n primeiros numeros naturais eh: %d \n", soma);
+
+    system("pause");
+    return 0;
+}
