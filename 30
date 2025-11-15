@@ -1,0 +1,67 @@
+/*
+30. Faça programas para calcular as seguintes sequências:
+
+1)  1 + 2 + 3 + 4 + 5 + ... + n
+2)  1 - 2 + 3 - 4 + 5 - ... + (2n - 1)
+3)  1 + 3 + 5 + 7 + ... + (2n - 1)
+*/
+
+#include <stdio.h>   // biblioteca padrão de entrada e saída
+#include <stdlib.h>  // usada para system("pause")
+
+int main()
+{
+    int n;  // variável que armazenará o número informado pelo usuário
+
+    // pede para o usuário digitar um valor inteiro positivo
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+
+    // ===============================
+    // 1ª SEQUÊNCIA: 1 + 2 + 3 + ... + n
+    // ===============================
+    int soma1 = 0; // acumulador da soma
+
+    for(int i = 1; i <= n; i++) // loop de 1 até n
+    {
+        soma1 += i; // soma os números de 1 até n
+    }
+
+    printf("\n1) Soma de 1 ate %d = %d\n", n, soma1);
+
+    // ===============================
+    // 2ª SEQUÊNCIA: 1 - 2 + 3 - 4 + 5 - 6 + ... + (2n - 1)
+    // ===============================
+    int soma2 = 0; // acumulador da soma
+
+    for(int i = 1; i <= 2 * n - 1; i++) // percorre até (2n - 1)
+    {
+        // se o número for par, subtrai; se for ímpar, soma
+        if(i % 2 == 0)
+        {
+            soma2 -= i;
+        }
+        else
+        {
+            soma2 += i;
+        }
+    }
+
+    printf("2) Soma alternada ate (2n - 1) = %d\n", soma2);
+
+    // ===============================
+    // 3ª SEQUÊNCIA: 1 + 3 + 5 + 7 + ... + (2n - 1)
+    // ===============================
+    int soma3 = 0; // acumulador da soma
+
+    for(int i = 1; i <= 2 * n - 1; i += 2) // conta apenas os ímpares
+    {
+        soma3 += i;
+    }
+
+    printf("3) Soma dos impares ate (2n - 1) = %d\n", soma3);
+
+    // pausa o programa antes de encerrar (útil no Windows)
+    system("pause");
+    return 0; // indica que o programa terminou corretamente
+}
