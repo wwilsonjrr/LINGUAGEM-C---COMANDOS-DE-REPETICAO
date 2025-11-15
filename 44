@@ -1,0 +1,60 @@
+/*
+44. Leia um número positivo do usuário, então calcule e imprima a sequência Fibonacci
+até o primeiro número superior ao número lido.
+
+Exemplo:
+Se o usuário informou o número 30, a sequência a ser impressa será:
+0 1 1 2 3 5 8 13 21 34
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int limite;          // Variável para armazenar o número informado pelo usuário
+    int a = 0, b = 1;    // Os dois primeiros números da sequência Fibonacci
+    int proximo;         // Variável para armazenar o próximo número da sequência
+
+    // Mensagem inicial
+    printf("=============================================\n");
+    printf("   SEQUENCIA DE FIBONACCI ATE ULTRAPASSAR UM LIMITE\n");
+    printf("=============================================\n\n");
+
+    // Solicita o valor limite
+    printf("Digite um numero positivo: ");
+    scanf("%d", &limite);
+
+    // Verifica se o número é válido (positivo)
+    if (limite <= 0)
+    {
+        printf("\nErro: o numero deve ser positivo!\n");
+    }
+    else
+    {
+        // Exibe os dois primeiros termos da sequência
+        printf("Sequencia Fibonacci: %d %d ", a, b);
+
+        // Calcula os próximos termos até ultrapassar o valor informado
+        while (1)
+        {
+            proximo = a + b;  // Próximo termo é a soma dos dois anteriores
+            printf("%d ", proximo);
+
+            if (proximo > limite)
+            {
+                break;  // Sai do laço quando o termo ultrapassar o limite
+            }
+
+            // Atualiza os valores de a e b para o próximo ciclo
+            a = b;
+            b = proximo;
+        }
+
+        printf("\n");
+    }
+
+    system("pause");  // Mantém o console aberto até o usuário pressionar uma tecla (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
