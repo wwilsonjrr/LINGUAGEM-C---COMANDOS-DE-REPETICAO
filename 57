@@ -1,0 +1,71 @@
+/*
+57. Faça um programa que conte quantos números primos existem entre a e b,
+onde a e b são números informados pelo usuário.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+#include <math.h>    // Biblioteca matemática (para sqrt)
+
+// Função que verifica se um número é primo
+int ehPrimo(int numero) // declaração da função
+{
+    if (numero < 2)  // 0 e 1 não são primos
+    {
+        return 0; // False
+    }
+    if (numero == 2) // 2 é primo
+    {
+        return 1; // True
+    }
+    if (numero % 2 == 0) // Números pares maiores que 2 não são primos
+    {
+        return 0; // False
+    }
+    // Testa divisores ímpares até a raiz quadrada do número
+    for (int i = 3; i <= sqrt(numero); i += 2)
+    {
+        if (numero % i == 0) // Se for divisível, não é primo
+        {
+            return 0;
+        }
+    }
+
+    return 1; // Caso contrário, é primo
+}
+
+int main()
+{
+    int a, b;          // Limites do intervalo informados pelo usuário
+    int contador = 0;  // Contador de números primos encontrados
+
+    // Solicita os dois valores ao usuário
+    printf("Digite o valor de a: ");
+    scanf("%d", &a);
+
+    printf("Digite o valor de b: ");
+    scanf("%d", &b);
+
+    // Garante que a < b (se o usuário digitar invertido)
+    if (a > b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    // Percorre todos os números entre a e b (inclusive)
+    for (int i = a; i <= b; i++)
+    {
+        if (ehPrimo(i))   // Se for primo
+        {
+            contador++;    // Incrementa o contador
+        }
+    }
+
+    // Exibe o resultado
+    printf("Existem %d numeros primos entre %d e %d.\n", contador, a, b);
+
+    system("pause"); // Pausa o programa antes de encerrar (Windows)
+    return 0;        // Indica que o programa terminou corretamente
+}
