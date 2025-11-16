@@ -1,0 +1,59 @@
+/*
+56. Faça um programa que calcule a soma de todos os números primos abaixo de dois milhões.
+*/
+
+#include <stdio.h>    // Biblioteca padrão para entrada e saída
+#include <stdlib.h>   // Biblioteca padrão (para system("pause"))
+#include <math.h>     // Biblioteca matemática (para sqrt)
+
+// Função que verifica se um número é primo
+int ehPrimo(long numero) // decharação da função
+{
+    if (numero < 2)    // 0 e 1 não são primos
+    {
+        return 0; // False
+    }
+
+    if (numero == 2)   // 2 é primo
+    {
+        return 1; // True
+    }
+
+    if (numero % 2 == 0)  // Números pares maiores que 2 não são primos
+    {
+        return 0; // False
+    }
+
+    // Testa divisores ímpares até a raiz quadrada do número
+    for (long i = 3; i <= sqrt(numero); i += 2)
+    {
+        if (numero % i == 0)  // Se for divisível, não é primo
+        {
+            return 0;  // False
+        }
+    }
+
+    return 1;  // Se não achou divisores, é primo
+}
+
+int main()
+{
+    const long LIMITE = 2000000;   // Limite de dois milhões  // const é um valor que não pode mudar durante o programa, long, com capacidade maior de armazenamento
+    long soma = 0;                 // Variável que acumula a soma dos primos    // é tipo int soma = 0, mas com mais capacidade de armazenamento
+
+    // Percorre todos os números abaixo de 2 milhões
+    for (long i = 2; i < LIMITE; i++)
+    {
+        if (ehPrimo(i))     // Se o número for primo...   // chama a função ehPrimo() para verificar se "i" é primo
+        {
+            soma += i;      // ... adiciona à soma total
+        }
+    }
+
+    // Exibe o resultado final
+    printf("A soma de todos os numeros primos abaixo de 2 milhoes eh: %ld\n", soma);
+
+    system("pause");  // Pausa o programa antes de encerrar (Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
