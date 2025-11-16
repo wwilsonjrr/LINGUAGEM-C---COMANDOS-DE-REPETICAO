@@ -1,0 +1,55 @@
+/*
+53. Escreva um programa que leia um número inteiro positivo n
+e em seguida imprima n linhas do chamado Triângulo de Floyd.
+
+Para n = 6, temos:
+
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+16 17 18 19 20 21
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int n;           // Número de linhas do Triângulo de Floyd
+    int num = 1;     // Primeiro número a ser impresso (inicia em 1)
+
+    // Exibe título do programa
+    printf("=============================================\n");
+    printf("       TRIANGULO DE FLOYD\n");
+    printf("=============================================\n\n");
+
+    // Solicita ao usuário o número de linhas
+    printf("Digite um numero inteiro positivo: ");
+    scanf("%d", &n);
+
+    // Verifica se o número é válido (positivo)
+    if (n <= 0)
+    {
+        printf("Valor invalido! O numero deve ser positivo.\n");
+        system("pause");
+        return 0; // Encerra o programa
+    }
+
+    // Estrutura de repetição externa (controla o número de linhas)
+    for (int i = 1; i <= n; i++)
+    {
+        // Estrutura interna (controla os números em cada linha)
+        for (int j = 1; j <= i; j++)
+        {
+            printf("%d ", num); // Imprime o número atual seguido de um espaço
+            num++;              // Incrementa o número para o próximo valor
+        }
+        printf("\n"); // Pula para a próxima linha após imprimir os números da linha atual
+    }
+
+    system("pause");  // Pausa a execução (para Windows)
+    return 0;         // Finaliza o programa com sucesso
+}
