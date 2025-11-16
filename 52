@@ -1,0 +1,70 @@
+/*
+52. Escreva um programa que receba como entrada o valor do saque realizado pelo cliente de um banco
+e retorne quantas notas de cada valor serão necessárias para atender ao saque com a menor quantidade
+de notas possível. Serão utilizadas notas de 100, 50, 20, 10, 5, 2 e 1 real.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+
+    int valor;        // Variável que armazena o valor total do saque digitado pelo usuário
+    int n100, n50, n20, n10, n5, n2, n1; // Variáveis para armazenar a quantidade de cada nota
+
+    // Exibe uma mensagem introdutória
+    printf("=============================================\n");
+    printf("   CALCULO DE NOTAS PARA O VALOR DO SAQUE\n");
+    printf("=============================================\n\n");
+
+    // Solicita o valor do saque
+    printf("Digite o valor do saque (em reais): ");
+    scanf("%d", &valor);  // Lê o valor digitado pelo usuário e armazena na variável 'valor'
+
+    // Verifica se o valor é válido (positivo)
+    if (valor <= 0)
+    {
+        printf("\nValor invalido! O saque deve ser maior que zero.\n");
+        system("pause");
+        return 0; // Encerra o programa
+    }
+
+    // Cálculo das notas usando divisão inteira e resto (%)
+    // A estratégia é: usar primeiro as notas maiores para minimizar a quantidade de cédulas
+
+    n100 = valor / 100;   // Calcula quantas notas de 100 cabem no valor
+    valor = valor % 100;  // Atualiza o valor restante após tirar as notas de 100
+
+    n50 = valor / 50;     // Calcula quantas notas de 50 cabem no valor restante
+    valor = valor % 50;   // Atualiza o valor restante
+
+    n20 = valor / 20;     // Calcula quantas notas de 20 cabem no valor restante
+    valor = valor % 20;   // Atualiza o valor restante
+
+    n10 = valor / 10;     // Calcula quantas notas de 10 cabem no valor restante
+    valor = valor % 10;   // Atualiza o valor restante
+
+    n5 = valor / 5;       // Calcula quantas notas de 5 cabem no valor restante
+    valor = valor % 5;    // Atualiza o valor restante
+
+    n2 = valor / 2;       // Calcula quantas notas de 2 cabem no valor restante
+    valor = valor % 2;    // Atualiza o valor restante
+
+    n1 = valor / 1;       // O valor restante (se houver) será em notas de 1 real
+
+    // Exibe o resultado final — número de cada nota necessária
+    printf("\nNotas necessarias para o saque:\n");
+    printf("100 Reais: %d\n", n100);
+    printf("50 Reais : %d\n", n50);
+    printf("20 Reais : %d\n", n20);
+    printf("10 Reais : %d\n", n10);
+    printf("5 Reais  : %d\n", n5);
+    printf("2 Reais  : %d\n", n2);
+    printf("1 Real   : %d\n", n1);
+
+    // Pausa o programa (para sistemas Windows)
+    system("pause");
+
+    return 0; // Indica que o programa terminou corretamente
+}
