@@ -1,0 +1,72 @@
+/*
+58. Faça um programa que some os números primos existentes entre a e b,
+onde a e b são números informados pelo usuário.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+#include <math.h>    // Biblioteca matemática (para sqrt)
+
+// Função que verifica se um número é primo
+int ehPrimo(int numero) // Declaração da função ehPrimo()
+{
+    if (numero < 2)  // 0 e 1 não são primos
+    {
+        return 0; // False
+    }
+    if (numero == 2) // 2 é primo
+    {
+        return 1; // True
+    }
+    if (numero % 2 == 0) // Números pares maiores que 2 não são primos
+    {
+        return 0; // False
+    }
+
+    // Testa divisores ímpares até a raiz quadrada do número
+    for (int i = 3; i <= sqrt(numero); i += 2)
+    {
+        if (numero % i == 0)  // Se encontrar um divisor, não é primo
+        {
+            return 0; // False
+        }
+    }
+
+    return 1; // Caso contrário, é primo
+}
+
+int main()
+{
+    int a, b;        // Limites do intervalo
+    int soma = 0;    // Variável para armazenar a soma dos números primos
+
+    // Solicita ao usuário os valores de a e b
+    printf("Digite o valor de a: ");
+    scanf("%d", &a);
+
+    printf("Digite o valor de b: ");
+    scanf("%d", &b);
+
+    // Garante que a < b (caso o usuário digite invertido)
+    if (a > b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    // Percorre todos os números entre a e b (inclusive)
+    for (int i = a; i <= b; i++)
+    {
+        if (ehPrimo(i))   // Se o número for primo
+        {
+            soma += i;    // Soma o número primo à variável soma
+        }
+    }
+
+    // Exibe o resultado final
+    printf("A soma dos numeros primos entre %d e %d eh: %d\n", a, b, soma);
+
+    system("pause"); // Pausa o programa antes de encerrar (Windows)
+    return 0;        // Indica que o programa terminou corretamente
+}
