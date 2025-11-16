@@ -1,0 +1,51 @@
+/*
+54. Faça um programa que receba um número inteiro maior do que 1,
+e verifique se o número fornecido é primo ou não.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+    int numero;   // Variável para armazenar o número digitado pelo usuário
+    int i;        // Variável de controle para o laço de repetição
+    int divisores = 0;  // Contador de divisores do número
+
+    // Solicita que o usuário digite um número inteiro maior que 1
+    printf("Digite um numero inteiro maior que 1: ");
+    scanf("%d", &numero);   // Lê o número informado e armazena em 'numero'
+
+    // Verifica se o número é válido (maior que 1)
+    if (numero <= 1)
+    {
+        printf("Numero invalido! Digite um numero maior que 1.\n");
+    }
+    else
+    {
+        // Percorre todos os números de 1 até o valor digitado
+        for (i = 1; i <= numero; i++)
+        {
+
+            // Verifica se o número atual divide o número digitado sem deixar resto
+            if (numero % i == 0)
+            {
+                divisores++;  // Se for divisível, incrementa o contador de divisores
+            }
+        }
+
+        // Se o número tiver exatamente 2 divisores (1 e ele mesmo), é primo
+        if (divisores == 2)
+        {
+            printf("O numero %d eh primo.\n", numero);
+        }
+        else
+        {
+            printf("O numero %d NAO eh primo.\n", numero);
+        }
+    }
+
+    system("pause");  // Pausa o programa antes de encerrar (útil no Windows)
+    return 0;         // Indica que o programa terminou corretamente
+}
+
