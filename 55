@@ -1,0 +1,75 @@
+/*
+55. Escreva um programa que leia um inteiro não negativo n
+e imprima a soma dos n primeiros números primos.
+*/
+
+#include <stdio.h>   // Biblioteca padrão para comandos de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (usada aqui apenas para system("pause"))
+
+// ----------------------------------------------------------
+// Função que verifica se um número é primo
+// Retorna 1 se for primo, 0 se não for.
+// ----------------------------------------------------------
+int ehPrimo(int numero)
+{
+    // 0 e 1 NÃO são primos
+    if (numero < 2)
+    {
+        return 0;
+    }
+
+    // Testa todos os divisores de 2 até numero-1
+    for (int i = 2; i < numero; i++)
+    {
+        // Se achar algum divisor exato → NÃO É PRIMO
+        if (numero % i == 0)
+        {
+           return 0;
+        }
+    }
+
+    // Se terminou o for sem retornar 0 → É PRIMO
+    return 1;
+}
+
+// ----------------------------------------------------------
+// Função principal (ponto de entrada do programa)
+// ----------------------------------------------------------
+int main()                // Função principal do programa, não recebe parâmetros e retorna um inteiro
+{
+    int n;                // Variável onde será armazenado quantos números primos o usuário quer somar
+    int contador = 0;     // Contador de quantos primos já foram encontrados
+    int numero = 2;       // Começa a testar pelo número 2 (primeiro número primo)
+    int soma = 0;         // Acumulador onde será guardada a soma dos números primos
+
+    // Entrada do usuário
+    printf("Digite um numero inteiro nao negativo n: "); // Exibe mensagem pedindo o valor de n
+    scanf("%d", &n);       // Lê o valor digitado e armazena na variável n
+
+
+    if (n < 0)             // Verifica se n é negativo (valor inválido)
+    {
+        printf("Numero invalido! Digite um numero nao negativo.\n"); // Mensagem de erro
+    }
+    else                   // Caso contrário, n é válido
+    {
+        // Enquanto não tiver encontrado n primos
+        while (contador < n)        // Repete até encontrar exatamente n números primos
+        {
+            if (ehPrimo(numero))    // Chama a função ehPrimo() para verificar se "numero" é primo
+            {
+                soma += numero;     // Se for primo, adiciona à variável soma
+                contador++;         // Incrementa o contador de primos encontrados
+            }
+
+            numero++;               // Passa para o próximo número e testa novamente
+        }
+
+        // Resultado final
+        printf("A soma dos %d primeiros numeros primos eh: %d\n", n, soma);
+        // Exibe a soma dos n primeiros números primos
+    }
+
+    system("pause");        // Pausa o programa (apenas no Windows)
+    return 0;               // Retorna 0 indicando que o programa terminou sem erros
+}
