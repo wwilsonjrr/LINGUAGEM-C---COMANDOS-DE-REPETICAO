@@ -1,0 +1,90 @@
+/*
+60. Faça um programa que leia vários números, calcule e mostre:
+(a) A soma dos números digitados
+(b) A quantidade de números digitados
+(c) A média dos números digitados
+(d) O maior número digitado
+(e) O menor número digitado
+(f) A média dos números pares
+A entrada de dados termina quando o usuário digitar 0.
+*/
+
+#include <stdio.h>   // Biblioteca padrão de entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+    int numero;               // Armazena o número digitado
+    int soma = 0;             // Soma de todos os números digitados
+    int contador = 0;         // Quantidade de números digitados
+    int maior = 0;            // Armazena o maior número
+    int menor = 0;            // Armazena o menor número
+    int soma_pares = 0;       // Soma dos números pares
+    int contador_pares = 0;   // Contador de números pares
+    float media = 0, media_pares = 0;  // Médias
+
+    printf("Digite um numero (0 para sair): ");
+    scanf("%d", &numero);
+
+    // O primeiro número define o valor inicial de maior e menor
+    if (numero != 0)
+    {
+        maior = numero;
+        menor = numero;
+    }
+
+    // Enquanto o número for diferente de 0
+    while (numero != 0)
+    {
+        soma += numero;     // Soma geral
+        contador++;         // Contador total
+
+        // Verifica se é o maior número
+        if (numero > maior)
+        {
+            maior = numero;
+        }
+
+        // Verifica se é o menor número
+        if (numero < menor)
+        {
+            menor = numero;
+        }
+
+        // Se o número for par, acumula para média dos pares
+        if (numero % 2 == 0)
+        {
+            soma_pares += numero;
+            contador_pares++;
+        }
+
+        // Lê o próximo número
+        printf("Digite outro numero (0 para sair): ");
+        scanf("%d", &numero);
+    }
+
+    // Calcula a média geral
+    if (contador > 0)
+    {
+        media = (float)soma / contador;
+    }
+
+    // Calcula a média dos pares (se houver pares)
+    if (contador_pares > 0)
+    {
+        media_pares = (float)soma_pares / contador_pares;
+    }
+
+    // Exibe os resultados
+    printf("\n===== RESULTADOS =====\n");
+    printf("Soma dos numeros digitados: %d\n", soma);
+    printf("Quantidade de numeros digitados: %d\n", contador);
+    printf("Media dos numeros digitados: %.2f\n", media);
+    printf("Maior numero digitado: %d\n", maior);
+    printf("Menor numero digitado: %d\n", menor);
+    printf("Media dos numeros pares: %.2f\n", media_pares);
+
+    system("pause"); // Pausa o programa antes de encerrar (Windows)
+    return 0;
+}
+
