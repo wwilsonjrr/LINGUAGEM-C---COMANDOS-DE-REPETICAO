@@ -1,0 +1,96 @@
+/*
+59. Escreva um programa que leia o número de habitantes de uma cidade, o valor do kWh,
+e para cada habitante entre com:
+  - consumo do mês
+  - código do consumidor (1-Residencial, 2-Comercial, 3-Industrial)
+No final, imprima:
+  - o maior consumo
+  - o menor consumo
+  - a média de consumo dos habitantes
+  - o total do consumo de cada categoria
+*/
+
+#include <stdio.h>   // Biblioteca padrão para entrada e saída (printf, scanf)
+#include <stdlib.h>  // Biblioteca padrão (para system("pause"))
+
+int main()
+{
+    int habitantes;                // Número total de habitantes
+    float valor_kwh;               // Valor do kWh informado
+    float consumo;                 // Consumo mensal de cada habitante
+    int codigo;                    // Código do tipo de consumidor
+
+    float soma_consumo = 0;        // Soma total dos consumos
+    float maior_consumo = 0;       // Armazena o maior consumo
+    float menor_consumo = 999999;  // Armazena o menor consumo (inicializa com valor alto)
+
+    // Totais por categoria
+    float total_residencial = 0;
+    float total_comercial = 0;
+    float total_industrial = 0;
+
+    // Solicita os dados iniciais
+    printf("Digite o numero de habitantes: ");
+    scanf("%d", &habitantes);
+
+    printf("Digite o valor do kWh (em reais): ");
+    scanf("%f", &valor_kwh);
+
+    // Laço para ler os dados de cada habitante
+    for (int i = 1; i <= habitantes; i++)
+    {
+        printf("\nHabitante %d:\n", i);
+        printf("Informe o consumo do mes (em kWh): ");
+        scanf("%f", &consumo);
+
+        printf("Informe o codigo do consumidor (1-Residencial, 2-Comercial, 3-Industrial): ");
+        scanf("%d", &codigo);
+
+        // Soma total dos consumos
+        soma_consumo += consumo;
+
+        // Atualiza o maior e menor consumo
+        if (consumo > maior_consumo)
+        {
+            maior_consumo = consumo;
+        }
+
+        if (consumo < menor_consumo)
+        {
+            menor_consumo = consumo;
+        }
+
+
+        // Acumula consumo por categoria
+        switch (codigo)
+        {
+            case 1:
+                total_residencial += consumo;
+                break;
+            case 2:
+                total_comercial += consumo;
+                break;
+            case 3:
+                total_industrial += consumo;
+                break;
+            default:
+                printf("Codigo invalido! (1-Residencial, 2-Comercial, 3-Industrial)\n");
+        }
+    }
+
+    // Calcula média de consumo
+    float media_consumo = soma_consumo / habitantes;
+
+    // Exibe resultados
+    printf("\n===== RELATORIO DE CONSUMO =====\n");
+    printf("Maior consumo: %.2f kWh\n", maior_consumo);
+    printf("Menor consumo: %.2f kWh\n", menor_consumo);
+    printf("Media de consumo: %.2f kWh\n", media_consumo);
+    printf("\nTotal por categoria:\n");
+    printf("Residencial: %.2f kWh (R$ %.2f)\n", total_residencial, total_residencial * valor_kwh);
+    printf("Comercial: %.2f kWh (R$ %.2f)\n", total_comercial, total_comercial * valor_kwh);
+    printf("Industrial: %.2f kWh (R$ %.2f)\n", total_industrial, total_industrial * valor_kwh);
+
+    system("pause"); // Pausa o programa antes de encerrar
+    return 0;        // Finaliza o programa
+}
